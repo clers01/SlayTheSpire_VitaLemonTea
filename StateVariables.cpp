@@ -20,6 +20,7 @@ StateVariables::StateVariables(void)
 	Deck[7] = 0003;
 	Deck[8] = 0003;
 	Deck[9] = 0002;//生成只有十张初始牌的牌库
+	int i;
 	for(i = 10; i <= 99; i++)
 	{
 		Deck[i] = 0000;//剩下的空位用0000表示
