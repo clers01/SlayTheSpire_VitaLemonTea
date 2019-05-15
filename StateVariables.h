@@ -32,5 +32,3 @@ public:
 	void draw(int drawnum);
 
 };
-
-StateVariables* player = new StateVariables();
