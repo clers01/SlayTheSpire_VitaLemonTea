@@ -1,5 +1,6 @@
 #pragma once
 #include "OverAll.h"
+#include "Enemy.h"
 
 class StateVariables
 {
@@ -10,7 +11,7 @@ public:
 	unsigned int HPMax;//生命值上限
 	unsigned int Energy;//法力值
 	unsigned int EnergyMax;//法力值上限
-	unsigned int Block;
+	unsigned int Block;//护盾
 	int Strength;//力量
 	int StrengthUp;//回合结束减少力量
 	int Dexterity;//敏捷
@@ -30,6 +31,6 @@ public:
 	int Frail;//破甲
 
 	void draw(int drawnum);
-	void usecard(int cardnum, Enemy target);
+	void usecard(int cardnum, Enemy* target);
 
 };
