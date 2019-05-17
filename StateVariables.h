@@ -30,7 +30,6 @@ public:
 	int Frail;//ÆÆ¼×
 
 	void draw(int drawnum);
+	void usecard(int cardnum, Enemy target);
 
 };
-
-StateVariables* player = new StateVariables();
