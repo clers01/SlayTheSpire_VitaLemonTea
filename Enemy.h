@@ -15,10 +15,10 @@ public:
 	unsigned int Damage3;//怪物攻击方案3伤害
 	unsigned int AttackTimes3;//怪物攻击方案3次数
 
+	int State_Weak;//虚弱
 	int State_Vulnerable;//易伤
-	int State_Poison;//
+	int State_Poison;//中毒
 	int State_Ritual;//仪式：回合结束加攻
-	//虚弱
 	unsigned int strength;//力量，攻击附加伤害
 
 	void debuffWeak(int n, StateVariables* player);//上n层虚弱
