@@ -29,6 +29,7 @@ public:
 	int Weak;//虚弱
 	int Berserk;//下回合开始获得Energy
 	int Frail;//破甲
+	float WeakCoefficient;//虚弱系数
 
 	void draw(int drawnum);
 	void usecard(int cardnum, Enemy* target);
