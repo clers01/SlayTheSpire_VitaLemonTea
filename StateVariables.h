@@ -7,11 +7,11 @@ class StateVariables
 public:
 	StateVariables(void);
 	~StateVariables(void);
-	unsigned int HP;//生命值
+	int HP;//生命值
 	unsigned int HPMax;//生命值上限
 	unsigned int Energy;//法力值
 	unsigned int EnergyMax;//法力值上限
-	unsigned int Block;//护盾
+	int Block;//护盾
 	int Strength;//力量
 	int StrengthUp;//回合结束减少力量
 	int Dexterity;//敏捷
@@ -30,8 +30,9 @@ public:
 	int Berserk;//下回合开始获得Energy
 	int Frail;//破甲
 	float WeakCoefficient;//虚弱系数
+	int CanDraw;//是否可继续摸牌
 
 	void draw(int drawnum);
-	void usecard(int cardnum, Enemy* target);
+	void usecard(int cardnum, Enemy* target, int n);
 
 };
