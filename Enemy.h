@@ -15,7 +15,7 @@ public:
 	unsigned int Damage3;//怪物攻击方案3伤害
 	unsigned int AttackTimes3;//怪物攻击方案3次数
 
-	int Weak;//虚弱
+	int State_Weak;//虚弱
 	int State_Vulnerable;//易伤
 	int State_Poison;//中毒
 	int State_Ritual;//仪式：回合结束加攻

@@ -164,4 +164,5 @@ void StateVariables::usecard(int cardnum, Enemy* target)
 		target->State_Vulnerable += 2;
 		target->State_Weak += 2;
 	}break;
+
 }
