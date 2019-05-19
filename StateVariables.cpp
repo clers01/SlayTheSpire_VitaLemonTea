@@ -1,5 +1,6 @@
 #include "StateVariables.h"
-
+#include <time.h>
+#define random(x) (rand()%x)
 
 StateVariables::StateVariables(void)
 {
@@ -47,3 +48,15 @@ void StateVariables::draw(int drawnum)
 	HandPoint = HandPoint + drawnum;
 	DrawPoint = DrawPoint - drawnum;
 };
+
+void StateVariables::addToDrawPile(int cardnum)
+{
+	srand((unsigned int)(time(NULL)));
+	int i = random(DrawPoint);
+	int temp = i;
+	for (; i < DrawPoint; i++)
+	{
+		DrawPile[i + 1] = DrawPile[i];
+	}
+	DrawPile[temp] = cardnum;
+}

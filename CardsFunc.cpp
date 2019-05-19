@@ -6,6 +6,7 @@
 #include "StateVariables.h"
 #include "Enemy.h"
 #define random(x) (rand()%x)
+#define damage(x) target->EnemyBlock -= int((x + Strength) * WeakCoefficient * target->Vulnerable)
 
 
 CardsFunc::CardsFunc(void)
@@ -103,14 +104,14 @@ void StateVariables::usecard(int cardnum, Enemy* target = NULL, int n = 0)
 	case 23:
 	{
 		Energy -= 1;
-		target->EnemyBlock -= int((12 + Strength) * WeakCoefficient * target->Vulnerable);
-		//DrawPile[];抽牌堆放牌还不知道咋写
+		damage(12);
+		addToDrawPile(131);
 	}break;
 	case 1023:
 	{
 		Energy -= 1;
-		target->EnemyBlock -= int((17 + Strength) * WeakCoefficient * target->Vulnerable);
-		//DrawPile[];抽牌堆放牌还不知道咋写
+		damage(17);
+		addToDrawPile(131);
 	}break;
 	case 17:
 	{
@@ -197,12 +198,12 @@ void StateVariables::usecard(int cardnum, Enemy* target = NULL, int n = 0)
 	case 10:
 	{
 		Strength += 2;
-		StrengthUp += 2;
+		StrengthUpTemp += 2;
 	}break;
 	case 1010:
 	{
 		Strength += 4;
-		StrengthUp += 4;
+		StrengthUpTemp += 4;
 	}break;
 	case 11:
 	{
@@ -329,13 +330,13 @@ void StateVariables::usecard(int cardnum, Enemy* target = NULL, int n = 0)
 	{
 		Energy -= 2;
 		Block += (12 + Dexterity);
-		FlameBarrier = 1;
+		FlameBarrier = 4;
 	}break;
 	case 1038:
 	{
 		Energy -= 2;
 		Block += (16 + Dexterity);
-		FlameBarrier = 2;
+		FlameBarrier = 6;
 	}break;
 	case 40:
 	{
@@ -378,6 +379,223 @@ void StateVariables::usecard(int cardnum, Enemy* target = NULL, int n = 0)
 	{
 		Energy -= 3;
 		target->EnemyBlock -= int((42 + Strength) * WeakCoefficient * target->Vulnerable);
+	}break;
+	case 65:
+	{
+		Energy -= 3;
+		StrengthUp += 2;
+	}break;
+	case 1065:
+	{
+		Energy -= 3;
+		StrengthUp += 3;
+	}break;
+	case 70:
+	{
+		Energy -= 2;
+		int i;
+		for (i = 0; i < n; i++)
+		{
+			(target + i)->EnemyBlock -= 21;
+		}
+		DiscardPile[DiscardPoint] = 129;
+		DiscardPoint++;
+	}break;
+	case 1070:
+	{
+		Energy -= 2;
+		int i;
+		for (i = 0; i < n; i++)
+		{
+			(target + i)->EnemyBlock -= 28;
+		}
+		DiscardPile[DiscardPoint] = 129;
+		DiscardPoint++;
+	}break;
+	case 72:
+	{
+		Energy -= 2;
+		Juggernaut = 5;
+	}break;
+	case 1072:
+	{
+		Energy -= 2;
+		Juggernaut = 7;
+	}break;
+	case 77:
+	{
+		damage(7);
+		HP += 2;
+	}break;
+	case 1077:
+	{
+		damage(8);
+		HP += 3;
+	}break;
+	case 8:
+	{
+		Energy -= 1;
+		int i;
+		for (i = 0; i < n; i++)
+		{
+			(target + i)->EnemyBlock -= int((8 + Strength) * WeakCoefficient * target->Vulnerable);
+		}
+	}break;
+	case 1008:
+	{
+		Energy -= 1;
+		int i;
+		for (i = 0; i < n; i++)
+		{
+			(target + i)->EnemyBlock -= int((8 + Strength) * WeakCoefficient * target->Vulnerable);
+		}
+	}break;
+	case 29:
+	{
+		Energy -= 1;
+		Combust = 5;
+	}break;
+	case 1029:
+	{
+		Energy -= 1;
+		Combust = 7;
+	}break;
+	case 35:
+	{
+		Energy -= 1;
+		Evolve = 1;
+	}break;
+	case 1035:
+	{
+		Energy -= 1;
+		Evolve = 2;
+	}break;
+	case 44:
+	{
+		Energy -= 1;
+		Metallicize = 3;
+	}break;
+	case 1044:
+	{
+		Energy -= 1;
+		Metallicize = 4;
+	}break;
+	case 45:
+	{
+		Energy -= 1;
+		Hand[HandPoint] = 131;
+		Hand[HandPoint + 1] = 131;
+		HandPoint += 2;
+		Block += 15;
+	}break;
+	case 1045:
+	{
+		Energy -= 1;
+		Hand[HandPoint] = 131;
+		Hand[HandPoint + 1] = 131;
+		HandPoint += 2;
+		Block += 20;
+	}break;
+	case 47:
+	{
+		Rage = 3;
+	}break;
+	case 1047:
+	{
+		Rage = 5;
+	}break;
+	case 48:
+	{
+		Energy -= 1;
+		damage(8 + RampageTime * 5);
+		RampageTime += 1;
+	}break;
+	case 1048:
+	{
+		Energy -= 1;
+		damage(8 + RampageTime * 8);
+		RampageTime += 1;
+	}break;
+	case 49:
+	{
+		damage(7);
+		addToDrawPile(130);
+	}break;
+	case 1049:
+	{
+		damage(10);
+		addToDrawPile(130);
+	}break;
+	case 50:
+	{
+		Energy -= 1;
+		Rupture = 1;
+	}break;
+	case 1050:
+	{
+		Rupture = 1;
+	}break;
+	case 57:
+	{
+		Energy -= 1;
+		int i;
+		for (i = 0; i < n; i++)
+		{
+			if ((target + i)->intend == 0)
+			{
+				Strength += 3;
+			}
+		}
+	}break;
+	case 1057:
+	{
+		Energy -= 1;
+		int i;
+		for (i = 0; i < n; i++)
+		{
+			if ((target + i)->intend == 0)
+			{
+				Strength += 4;
+			}
+		}
+	}break;
+	case 59:
+	{
+		int i, j;
+		for (i = 0; i < n; i++)
+		{
+			for (j = 0; j < Energy; j++)
+			{
+				(target + i)->EnemyBlock -= int((5 + Strength) * WeakCoefficient * target->Vulnerable);
+			}
+		}
+		Energy = 0;
+	}break;
+	case 1059:
+	{
+		int i, j;
+		for (i = 0; i < n; i++)
+		{
+			for (j = 0; j < Energy; j++)
+			{
+				(target + i)->EnemyBlock -= int((8 + Strength) * WeakCoefficient * target->Vulnerable);
+			}
+		}
+		Energy = 0;
+	}break;
+	case 60:
+	{
+		Energy -= 3;
+		Barricade = 1;
+	}break;
+	case 1060:
+	{
+		Energy -= 2;
+		Barricade = 1;
+	}break;
+	case 63:
+	{
+		Brutality = 1;
 	}break;
 	}
 }
