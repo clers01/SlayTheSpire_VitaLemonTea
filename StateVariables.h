@@ -31,6 +31,7 @@ public:
 	int Frail;//破甲
 	float WeakCoefficient;//虚弱系数
 	int CanDraw;//是否可继续摸牌
+	int FlameBarrier;//反伤状态
 
 	void draw(int drawnum);
 	void usecard(int cardnum, Enemy* target, int n);

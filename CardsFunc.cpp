@@ -19,7 +19,7 @@ CardsFunc::~CardsFunc(void)
 
 
 
-void StateVariables::usecard(int cardnum, Enemy* target, int n)
+void StateVariables::usecard(int cardnum, Enemy* target = NULL, int n = 0)
 {
 	switch (cardnum)
 	{
@@ -172,17 +172,17 @@ void StateVariables::usecard(int cardnum, Enemy* target, int n)
 		target->State_Vulnerable += 2;
 		target->State_Weak += 2;
 	}break;
-/*	case 5:
-	{
-		Energy -= 1;
-		Block += (5 + Dexterity);
-		int i;
-		for (i = 1; i < HandPoint; i++)
+	/*	case 5:
 		{
-			if (Hand[i] < 1000)
-				Hand[i] += 1000;
-		}
-	}*/
+			Energy -= 1;
+			Block += (5 + Dexterity);
+			int i;
+			for (i = 1; i < HandPoint; i++)
+			{
+				if (Hand[i] < 1000)
+					Hand[i] += 1000;
+			}
+		}*/
 	case 1005:
 	{
 		Energy -= 1;
@@ -223,7 +223,7 @@ void StateVariables::usecard(int cardnum, Enemy* target, int n)
 		int t = random(n);
 		int i;
 		for (i = 0; i < 3; i++)
-			(target + t)->EnemyBlock -= 3;
+			(target + t)->EnemyBlock -= int((3 + Strength) * WeakCoefficient * target->Vulnerable);
 	}break;
 	case 1018:
 	{
@@ -232,7 +232,7 @@ void StateVariables::usecard(int cardnum, Enemy* target, int n)
 		int t = random(n);
 		int i;
 		for (i = 0; i < 4; i++)
-			(target + t)->EnemyBlock -= 3;
+			(target + t)->EnemyBlock -= int((3 + Strength) * WeakCoefficient * target->Vulnerable);
 	}break;
 	case 19:
 	{
@@ -240,7 +240,7 @@ void StateVariables::usecard(int cardnum, Enemy* target, int n)
 		int i;
 		for (i = 0; i < n; i++)
 		{
-			(target + i)->EnemyBlock -= 4;
+			(target + i)->EnemyBlock -= int((4 + Strength) * WeakCoefficient * target->Vulnerable);
 			(target + i)->State_Vulnerable += 1;
 		}
 	}break;
@@ -250,7 +250,7 @@ void StateVariables::usecard(int cardnum, Enemy* target, int n)
 		int i;
 		for (i = 0; i < n; i++)
 		{
-			(target + i)->EnemyBlock -= 7;
+			(target + i)->EnemyBlock -= int((7 + Strength) * WeakCoefficient * target->Vulnerable);
 			(target + i)->State_Vulnerable += 1;
 		}
 	}break;
@@ -284,6 +284,100 @@ void StateVariables::usecard(int cardnum, Enemy* target, int n)
 	{
 		HP -= 3;
 		Energy += 2;
+	}break;
+	case 28:
+	{
+		Energy -= 2;
+		target->EnemyBlock -= int((20 + Strength) * WeakCoefficient * target->Vulnerable);
+	}break;
+	case 1028:
+	{
+		Energy -= 2;
+		target->EnemyBlock -= int((28 + Strength) * WeakCoefficient * target->Vulnerable);
+	}break;
+	case 32:
+	{
+		Energy -= 1;
+		target->EnemyBlock -= int((5 + Strength) * WeakCoefficient * target->Vulnerable);
+		if (target->State_Vulnerable > 0)
+		{
+			Energy += 1;
+			draw(1);
+		}
+	}break;
+	case 1032:
+	{
+		Energy -= 1;
+		target->EnemyBlock -= int((8 + Strength) * WeakCoefficient * target->Vulnerable);
+		if (target->State_Vulnerable > 0)
+		{
+			Energy += 1;
+			draw(1);
+		}
+	}break;
+	case 34:
+	{
+		Energy -= 2;
+		Block *= 2;
+	}break;
+	case 1034:
+	{
+		Energy -= 1;
+		Block *= 2;
+	}break;
+	case 38:
+	{
+		Energy -= 2;
+		Block += (12 + Dexterity);
+		FlameBarrier = 1;
+	}break;
+	case 1038:
+	{
+		Energy -= 2;
+		Block += (16 + Dexterity);
+		FlameBarrier = 2;
+	}break;
+	case 40:
+	{
+		Energy -= 1;
+		HP -= 3;
+		target->EnemyBlock -= int((14 + Strength) * WeakCoefficient * target->Vulnerable);
+	}break;
+	case 1040:
+	{
+		Energy -= 1;
+		HP -= 2;
+		target->EnemyBlock -= int((18 + Strength) * WeakCoefficient * target->Vulnerable);
+	}break;
+	case 42:
+	{
+		Energy -= 1;
+		Strength += 2;
+	}break;
+	case 1042:
+	{
+		Energy -= 1;
+		Strength += 3;
+	}break;
+	case 61:
+	{
+		Vulnerable += 3;
+		Berserk += 1;
+	}break;
+	case 1061:
+	{
+		Vulnerable += 2;
+		Berserk += 1;
+	}break;
+	case 62:
+	{
+		Energy -= 3;
+		target->EnemyBlock -= int((32 + Strength) * WeakCoefficient * target->Vulnerable);
+	}break;
+	case 1062:
+	{
+		Energy -= 3;
+		target->EnemyBlock -= int((42 + Strength) * WeakCoefficient * target->Vulnerable);
 	}break;
 	}
 }

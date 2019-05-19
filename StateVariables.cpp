@@ -27,6 +27,8 @@ StateVariables::StateVariables(void)
 	}
 	DrawNum = 5;//每回合抽5张牌
 	CanDraw = 1;
+	FlameBarrier = 0;
+	Berserk = 0;
 }
 
 
