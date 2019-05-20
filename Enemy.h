@@ -21,6 +21,7 @@ public:
 	int State_Ritual;//仪式：回合结束加攻
 	unsigned int strength;//力量，攻击附加伤害
 	float Vulnerable;
+	int intend;//下次执行命令
 
 	void debuffWeak(int n, StateVariables* player);//上n层虚弱
 	void debuffMucus(int n, StateVariables* player);//给粘液牌
