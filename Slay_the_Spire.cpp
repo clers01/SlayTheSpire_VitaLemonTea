@@ -11,5 +11,6 @@ void main()
 	/*¼ì²âÒÅÎï²¢½áËã*/
 	player->draw(player->DrawNum);
 
+
 	return;
 }
