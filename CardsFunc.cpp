@@ -150,26 +150,26 @@ void StateVariables::usecard(int cardnum, Enemy* target = NULL, int n = 0)
 	case 14:
 	{
 		Energy -= 1;
-		target->EnemyBlock -= int((5 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(5);
 		Block += (5 + Dexterity);
 	}break;
 	case 1014:
 	{
 		Energy -= 1;
-		target->EnemyBlock -= int((7 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(7);
 		Block += (7 + Dexterity);
 	}break;
 	case 58:
 	{
 		Energy -= 2;
-		target->EnemyBlock -= int((13 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(13);
 		target->State_Vulnerable += 1;
 		target->State_Weak += 1;
 	}break;
 	case 1058:
 	{
 		Energy -= 2;
-		target->EnemyBlock -= int((13 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(13);
 		target->State_Vulnerable += 2;
 		target->State_Weak += 2;
 	}break;
@@ -289,17 +289,17 @@ void StateVariables::usecard(int cardnum, Enemy* target = NULL, int n = 0)
 	case 28:
 	{
 		Energy -= 2;
-		target->EnemyBlock -= int((20 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(20);
 	}break;
 	case 1028:
 	{
 		Energy -= 2;
-		target->EnemyBlock -= int((28 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(28);
 	}break;
 	case 32:
 	{
 		Energy -= 1;
-		target->EnemyBlock -= int((5 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(5);
 		if (target->State_Vulnerable > 0)
 		{
 			Energy += 1;
@@ -309,7 +309,7 @@ void StateVariables::usecard(int cardnum, Enemy* target = NULL, int n = 0)
 	case 1032:
 	{
 		Energy -= 1;
-		target->EnemyBlock -= int((8 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(8);
 		if (target->State_Vulnerable > 0)
 		{
 			Energy += 1;
@@ -342,13 +342,13 @@ void StateVariables::usecard(int cardnum, Enemy* target = NULL, int n = 0)
 	{
 		Energy -= 1;
 		HP -= 3;
-		target->EnemyBlock -= int((14 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(14);
 	}break;
 	case 1040:
 	{
 		Energy -= 1;
 		HP -= 2;
-		target->EnemyBlock -= int((18 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(18);
 	}break;
 	case 42:
 	{
@@ -373,12 +373,12 @@ void StateVariables::usecard(int cardnum, Enemy* target = NULL, int n = 0)
 	case 62:
 	{
 		Energy -= 3;
-		target->EnemyBlock -= int((32 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(32);
 	}break;
 	case 1062:
 	{
 		Energy -= 3;
-		target->EnemyBlock -= int((42 + Strength) * WeakCoefficient * target->Vulnerable);
+		damage(42);
 	}break;
 	case 65:
 	{

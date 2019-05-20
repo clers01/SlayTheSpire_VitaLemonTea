@@ -30,6 +30,17 @@ StateVariables::StateVariables(void)
 	CanDraw = 1;
 	FlameBarrier = 0;
 	Berserk = 0;
+	RampageTime = 0;
+	FlameBarrier = 0;//FB效果
+	Juggernaut = 0;//Juggernaut效果
+	Combust = 0;//Combust效果
+	Evolve = 0;//Evolve效果
+	Metallicize = 0;//Metallicize效果
+	Rage = 0;//Rage效果
+	RampageTime = 0;//Rampage使用次数
+	Rupture = 0;//Rupture效果
+	Barricade = 0;//Barricade效果
+	Brutality = 0;//Brutality效果
 }
 
 
