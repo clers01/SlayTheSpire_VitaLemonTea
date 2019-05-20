@@ -1,9 +1,9 @@
 #pragma once
-class CardsFunc
+class Cards
 {
 public:
-	CardsFunc(void);
-	~CardsFunc(void);
+	Cards(void);
+	~Cards(void);
 	unsigned int CardsNum;//卡牌编号
 	unsigned int EnergyCost;//费用
 	unsigned int EnergyCost_Up;//升级后费用
@@ -13,6 +13,6 @@ public:
 	int Damage_Up;//升级后造成伤害值
 	int LevelUp;//是否已升级，1表示升级，0表示未升级
 	
-
+	int EnergyConsume(int x, StateVariables* player);
 };
 

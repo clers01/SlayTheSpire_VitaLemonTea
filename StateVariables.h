@@ -1,6 +1,7 @@
 #pragma once
 #include "OverAll.h"
 #include "Enemy.h"
+#include "Cards.h"
 
 class StateVariables
 {
@@ -18,7 +19,10 @@ public:
 	int DexterityUpTemp;//单回合增加的敏捷
 	unsigned int Gold;//金币
 	unsigned int Hand[10];//手牌
-	unsigned int Deck[100];//牌库
+	Cards* GameDeck[300];//游戏牌库
+	unsigned int GameDeckPoint;//游戏牌库指针
+	Cards* Deck[100];//玩家牌库
+	unsigned int DeckPoint;//玩家牌库指针
 	unsigned int DrawNum;
 	unsigned int DrawPile[100];//抽牌堆数组
 	unsigned int DiscardPile[100];
